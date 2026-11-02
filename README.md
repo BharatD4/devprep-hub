@@ -1,9 +1,11 @@
 # 🚀 DevPrep Hub — Cross-Platform Developer Interview Platform
 
-[![CI/CD Pipeline](https://img.shields.io/badge/CI%2FCD-Passing-emerald?style=for-the-badge&logo=githubactions)](https://github.com/BharatD4/devprep-hub)
+[![DevPrep Hub CI/CD](https://github.com/BharatD4/devprep-hub/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/BharatD4/devprep-hub/actions/workflows/ci-cd.yml)
 [![Live Web Application](https://img.shields.io/badge/Live%20Web%20App-Online-indigo?style=for-the-badge&logo=vercel)](https://devprep-hub.vercel.app)
 [![GitHub Repository](https://img.shields.io/badge/GitHub-BharatD4%2Fdevprep--hub-181717?style=for-the-badge&logo=github)](https://github.com/BharatD4/devprep-hub)
-[![Platform](https://img.shields.io/badge/Stack-Next.js%2015%20%7C%20Expo%20%7C%20tRPC%20%7C%20Prisma-blue?style=for-the-badge)](https://github.com/BharatD4/devprep-hub)
+[![Stack](https://img.shields.io/badge/Stack-Next.js%2015%20%7C%20Expo%20%7C%20tRPC%20%7C%20Prisma-blue?style=for-the-badge)](https://github.com/BharatD4/devprep-hub)
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FBharatD4%2Fdevprep-hub&root-directory=apps%2Fweb)
 
 > **DevPrep Hub** is an enterprise-grade, cross-platform Software Developer Interview Preparation platform architected inside a **Turborepo** monorepo with **pnpm workspaces**, **Next.js 15 App Router**, **React Native / Expo Router**, **tRPC v10**, **Prisma ORM (Supabase PostgreSQL)**, and **Gemini AI**.
 
@@ -11,10 +13,11 @@
 
 ## 🌐 Live Access Links
 
-| Resource | URL | Description |
+| Platform | Access Link | Description |
 | :--- | :--- | :--- |
 | ⚡ **Live Web Application** | [**https://devprep-hub.vercel.app**](https://devprep-hub.vercel.app) | Production web interface with Monaco IDE, System Design studio, and AI Mock Interviewer |
-| 📦 **GitHub Repository** | [**https://github.com/BharatD4/devprep-hub**](https://github.com/BharatD4/devprep-hub) | Full monorepo source code with automated CI/CD workflows |
+| 🚀 **1-Click Live Deploy** | [**Deploy on Vercel**](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FBharatD4%2Fdevprep-hub&root-directory=apps%2Fweb) | Deploy your own instance directly to Vercel in 1-click |
+| 📦 **GitHub Repository** | [**https://github.com/BharatD4/devprep-hub**](https://github.com/BharatD4/devprep-hub) | Complete monorepo source code & active CI/CD workflow |
 | 📱 **Mobile App (Expo)** | `pnpm --filter @devprep/mobile start` | React Native mobile client with Parsons drills and offline cache |
 
 ---
@@ -110,11 +113,10 @@ pnpm --filter @devprep/web build
 
 ---
 
-## 🚢 Deploying to Vercel (One-Click)
+## 🚢 Deploying to Vercel (1-Click)
 
-1. Push this repository to GitHub under your account (`BharatD4/devprep-hub`).
-2. Go to [Vercel Dashboard](https://vercel.com/new).
-3. Import the `BharatD4/devprep-hub` repository.
-4. Set **Root Directory** to `apps/web`.
-5. Select Framework Preset as **Next.js**.
-6. Click **Deploy**. Vercel will build the Next.js 15 app and deploy it to `https://devprep-hub.vercel.app`!
+Click the button below to deploy this monorepo to Vercel:
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FBharatD4%2Fdevprep-hub&root-directory=apps%2Fweb)
+
+Vercel will automatically build `apps/web` with Next.js 15, wire the serverless tRPC routes, and deploy the live site.
