@@ -1,7 +1,7 @@
 # 🚀 DevPrep Hub — Cross-Platform Developer Interview Platform
 
 [![DevPrep Hub CI/CD](https://github.com/BharatD4/devprep-hub/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/BharatD4/devprep-hub/actions/workflows/ci-cd.yml)
-[![Live Web Application](https://img.shields.io/badge/Live%20Web%20App-Online-indigo?style=for-the-badge&logo=vercel)](https://devprep-hub.vercel.app)
+[![Live Web Application](https://img.shields.io/badge/Live%20Web%20App-Online-indigo?style=for-the-badge&logo=vercel)](https://web-five-eta-28.vercel.app)
 [![GitHub Repository](https://img.shields.io/badge/GitHub-BharatD4%2Fdevprep--hub-181717?style=for-the-badge&logo=github)](https://github.com/BharatD4/devprep-hub)
 [![Stack](https://img.shields.io/badge/Stack-Next.js%2015%20%7C%20Expo%20%7C%20tRPC%20%7C%20Prisma-blue?style=for-the-badge)](https://github.com/BharatD4/devprep-hub)
 
@@ -15,7 +15,7 @@
 
 | Platform | Access Link | Description |
 | :--- | :--- | :--- |
-| ⚡ **Live Web Application** | [**https://devprep-hub.vercel.app**](https://devprep-hub.vercel.app) | Production web interface with Monaco IDE, System Design studio, and AI Mock Interviewer |
+| ⚡ **Live Production Web Application** | [**https://web-five-eta-28.vercel.app**](https://web-five-eta-28.vercel.app) | Live deployed Next.js 15 App Router platform on Vercel |
 | 🚀 **1-Click Live Deploy** | [**Deploy on Vercel**](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FBharatD4%2Fdevprep-hub&root-directory=apps%2Fweb) | Deploy your own instance directly to Vercel in 1-click |
 | 📦 **GitHub Repository** | [**https://github.com/BharatD4/devprep-hub**](https://github.com/BharatD4/devprep-hub) | Complete monorepo source code & active CI/CD workflow |
 | 📱 **Mobile App (Expo)** | `pnpm --filter @devprep/mobile start` | React Native mobile client with Parsons drills and offline cache |
@@ -118,5 +118,3 @@ pnpm --filter @devprep/web build
 Click the button below to deploy this monorepo to Vercel:
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FBharatD4%2Fdevprep-hub&root-directory=apps%2Fweb)
-
-Vercel will automatically build `apps/web` with Next.js 15, wire the serverless tRPC routes, and deploy the live site.
