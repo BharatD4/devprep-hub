@@ -6,9 +6,11 @@ import { systemDesignRouter } from './routers/systemDesign';
 import { aiInterviewRouter } from './routers/aiInterview';
 import { atsRouter } from './routers/ats';
 import { analyticsRouter } from './routers/analytics';
+import { conceptRouter } from './routers/concept';
 
 export const appRouter = router({
   problem: problemRouter,
+  concept: conceptRouter,
   roadmap: roadmapRouter,
   srs: srsRouter,
   systemDesign: systemDesignRouter,

@@ -113,7 +113,33 @@ export default function DashboardPage() {
         </Link>
 
         <Link
-          href="/arena/two-sum"
+          href="/concepts"
+          className="group rounded-xl border border-amber-500/30 bg-[#161a24] p-5 hover:border-amber-500/70 hover:bg-[#1a2130] transition-all flex flex-col justify-between shadow-lg"
+        >
+          <div className="space-y-3">
+            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-amber-500/20 text-amber-400 group-hover:scale-110 transition-transform">
+              <Sparkles className="h-5 w-5" />
+            </div>
+            <div>
+              <div className="inline-block rounded bg-amber-500/20 px-2 py-0.5 text-[10px] font-bold text-amber-300 uppercase tracking-wide mb-1">
+                High-Yield Vault
+              </div>
+              <h3 className="text-base font-semibold text-white group-hover:text-amber-400 transition-colors">
+                Concepts & Short Tricks
+              </h3>
+              <p className="text-xs text-gray-400 mt-1">
+                Formulas, DSA patterns, System Design math, OS & Networks cheat sheets.
+              </p>
+            </div>
+          </div>
+          <div className="mt-4 flex items-center gap-1 text-xs font-semibold text-amber-400">
+            <span>Read Formulas</span>
+            <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
+          </div>
+        </Link>
+
+        <Link
+          href="/arena"
           className="group rounded-xl border border-gray-800 bg-[#111827]/70 p-5 hover:border-indigo-500/50 hover:bg-[#161f33] transition-all flex flex-col justify-between"
         >
           <div className="space-y-3">
@@ -121,6 +147,9 @@ export default function DashboardPage() {
               <Code2 className="h-5 w-5" />
             </div>
             <div>
+              <div className="inline-block rounded bg-emerald-500/20 px-2 py-0.5 text-[10px] font-bold text-emerald-300 uppercase tracking-wide mb-1">
+                150 Questions (30/Topic)
+              </div>
               <h3 className="text-base font-semibold text-white group-hover:text-emerald-400 transition-colors">
                 DSA Coding Arena
               </h3>
@@ -130,7 +159,7 @@ export default function DashboardPage() {
             </div>
           </div>
           <div className="mt-4 flex items-center gap-1 text-xs font-semibold text-emerald-400">
-            <span>Solve Problem</span>
+            <span>Explore 150 Problems</span>
             <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
           </div>
         </Link>

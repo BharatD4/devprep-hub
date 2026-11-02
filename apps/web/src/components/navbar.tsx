@@ -20,6 +20,7 @@ import {
 const NAV_LINKS = [
   { href: '/', label: 'Dashboard', icon: Compass },
   { href: '/arena', label: 'Coding Arena', icon: Code2 },
+  { href: '/concepts', label: 'Concepts & Formulas', icon: Sparkles },
   { href: '/roadmaps', label: 'Roadmaps', icon: Map },
   { href: '/system-design', label: 'System Design', icon: Layout },
   { href: '/mock-interview', label: 'AI Interview', icon: Bot },

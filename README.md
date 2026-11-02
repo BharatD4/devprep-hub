@@ -54,7 +54,7 @@ pnpm install
 # Generates Prisma client
 pnpm db:generate
 
-# Seeds 10 DSA Problems, 3 System Design Prompts, and 20 CS Fundamentals Flashcards
+# Seeds 150 In-Depth DSA Problems (30 per topic), 3 System Design Prompts, Formula Vault & CS Flashcards
 pnpm db:seed
 ```
 
@@ -86,12 +86,20 @@ pnpm --filter @devprep/web build
 
 ## 🌟 Core Modules & Features
 
-### 🧩 Module A: Resource Hub & Curated Roadmaps
+### 🧩 Module A: Resource Hub, Roadmaps & High-Yield Concept Vault
+- **Concept, Formula & Short Trick Vault (`/concepts`)**: Searchable, categorized revision cheat sheets covering DSA Patterns (Sliding Window, Monotonic Stack, Binary Search on Answer), System Design Math (Latency numbers, QPS & Capacity estimation, PACELC, Quorum $R + W > N$), OS (Coffman conditions, TLB EMAT), DBMS (Isolation levels, B+ Tree height math), and Networks (BDP, TCP handshake, HTTP/1-3).
 - **Interactive Pathways**: Structured curriculum for **Blind 75**, **NeetCode 150**, Frontend, and Backend with prerequisite topic DAGs and persistent completion tracking.
 - **Spaced Repetition System (SRS)**: Built-in **SuperMemo SM-2** algorithm ($EF' = EF + (0.1 - (5 - q) \cdot (0.08 + (5 - q) \cdot 0.02))$) scheduling daily review queues based on confidence ratings (*Again*, *Hard*, *Good*, *Easy*).
 - **CS Fundamentals Vault**: Searchable high-yield flashcards covering Operating Systems, DBMS, Networks, Concurrency, and OOPs.
 
-### 💻 Module B: DSA Coding Arena
+### 💻 Module B: DSA Coding Arena (150 Questions • 30 Per Core Topic)
+- **150 Complete Problem Set (30 per Core Category)**:
+  - **Arrays, Two Pointers & Sliding Window (30)**: Two Sum, 3Sum, Trapping Rain Water, Min Window Substring, Longest Substring Without Repeating, Sliding Window Max, Kadane's, Next Permutation, etc.
+  - **Linked Lists, Stacks & Queues (30)**: Reverse List, Reorder List, LRU Cache, LFU Cache, Merge K Lists, Daily Temperatures, Largest Rectangle in Histogram, Car Fleet, Basic Calculator, etc.
+  - **Binary Trees, BST, Heaps & Tries (30)**: Invert Tree, Diameter, LCA, Level Order, Validate BST, Max Path Sum, Serialize & Deserialize, Find Median from Data Stream, Trie, Word Search II, etc.
+  - **Graph Traversal, DSU & Shortest Paths (30)**: Number of Islands, Rotting Oranges, Course Schedule I & II, Redundant Connection, Word Ladder, Dijkstra, Tarjan's Bridges, Bus Routes, Making A Large Island, etc.
+  - **Dynamic Programming & Backtracking (30)**: Climbing Stairs, House Robber I & II, Coin Change I & II, Longest Increasing Subsequence, Word Break, Edit Distance, Burst Balloons, N-Queens, Sudoku Solver, Wildcard Matching, etc.
+- **Optimal Engineering Editorials**: Every single problem features a dedicated "💡 Short Trick & Intuition" section, time & space Big-O derivations, and optimal clean code.
 - **Web Experience**: Resizable split-pane layout featuring problem constraints, multi-language Monaco IDE (Python 3, JavaScript, TypeScript, C++, Java, Go), and a collapsible test console.
 - **Automated Grading & Complexity Analyzer**: Multi-language execution via Judge0 / Piston sandboxed runner returning runtime (ms), memory (MB), and automated Big-O Time & Space complexity critique.
 - **Mobile Experience**: Optimized mobile problem reader, syntax-highlighted solutions, and touch-friendly **Parsons Problems** for drag-and-drop commute drills.

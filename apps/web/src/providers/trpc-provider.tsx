@@ -11,6 +11,7 @@ function getBaseUrl() {
   return 'http://localhost:3000';
 }
 
+export { trpc } from '../lib/trpc';
 export function TRPCProvider({ children }: { children: React.ReactNode }) {
   const [queryClient] = useState(
     () =>

@@ -32,11 +32,14 @@ export default function ArenaListPage() {
     'Arrays & Hashing',
     'Two Pointers',
     'Sliding Window',
-    'Stack',
     'Linked List',
+    'Stack',
     'Trees',
+    'Heaps',
+    'Tries',
+    'Graphs',
     'Dynamic Programming',
-    'Heap / Priority Queue',
+    'Backtracking',
   ];
 
   const companies = ['ALL', 'Google', 'Amazon', 'Meta', 'Microsoft', 'Apple', 'Uber'];
@@ -107,6 +110,12 @@ export default function ArenaListPage() {
             </option>
           ))}
         </select>
+      </div>
+
+      {/* Problem Count Summary & Table */}
+      <div className="flex items-center justify-between text-xs text-gray-400 px-1">
+        <span>Showing <strong className="text-white">{problems?.length || 0}</strong> questions</span>
+        <span className="text-indigo-400 font-medium">30 Curated Questions per Core Topic • 150 Total</span>
       </div>
 
       {/* Problem Table */}
