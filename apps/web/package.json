@@ -1,0 +1,38 @@
+{
+  "name": "@devprep/web",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --port 3000",
+    "build": "next build",
+    "start": "next start --port 3000",
+    "typecheck": "tsc --noEmit",
+    "lint": "echo Web lint ok"
+  },
+  "dependencies": {
+    "next": "^15.1.7",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "@trpc/client": "^10.45.2",
+    "@trpc/server": "^10.45.2",
+    "@trpc/react-query": "^10.45.2",
+    "@tanstack/react-query": "^4.36.1",
+    "@monaco-editor/react": "^4.6.0",
+    "lucide-react": "^0.469.0",
+    "zustand": "^5.0.2",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^2.6.0",
+    "@devprep/ui": "workspace:*",
+    "@devprep/api": "workspace:*",
+    "@devprep/db": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "@types/react": "^19.0.2",
+    "@types/react-dom": "^19.0.2",
+    "typescript": "^5.7.3",
+    "tailwindcss": "^3.4.17",
+    "postcss": "^8.4.49",
+    "autoprefixer": "^10.4.20"
+  }
+}

@@ -1,0 +1,232 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Difficulty {
+  EASY
+  MEDIUM
+  HARD
+}
+
+enum Role {
+  USER
+  PREMIUM
+  ADMIN
+}
+
+enum SubmissionStatus {
+  ACCEPTED
+  WRONG_ANSWER
+  TIME_LIMIT_EXCEEDED
+  MEMORY_LIMIT_EXCEEDED
+  RUNTIME_ERROR
+  COMPILATION_ERROR
+}
+
+enum InterviewType {
+  DSA_TECHNICAL
+  SYSTEM_DESIGN_HLD
+  SYSTEM_DESIGN_LLD
+  BEHAVIORAL_STAR
+}
+
+model User {
+  id               String                 @id @default(uuid())
+  email            String                 @unique
+  name             String?
+  avatarUrl        String?
+  role             Role                   @default(USER)
+  targetRole       String                 @default("Senior Full-Stack Engineer")
+  streakCount      Int                    @default(0)
+  lastActiveDate   DateTime               @default(now())
+  readinessScore   Int                    @default(0)
+  createdAt        DateTime               @default(now())
+  updatedAt        DateTime               @updatedAt
+
+  submissions      Submission[]
+  srsProgress      UserFlashcardSRS[]
+  mockInterviews   MockInterviewSession[]
+  stories          BehavioralStory[]
+  roadmapProgress  RoadmapProgress[]
+  atsScans         ATSScanResult[]
+
+  @@index([email])
+}
+
+model Problem {
+  id              String       @id @default(uuid())
+  slug            String       @unique
+  title           String
+  difficulty      Difficulty   @default(MEDIUM)
+  category        String
+  companyTags     String[]
+  orderIndex      Int          @default(0)
+  descriptionMdx  String       @db.Text
+  constraints     String[]
+  starterCodeJson Json
+  testCasesJson   Json
+  editorialMdx    String?      @db.Text
+  timeLimitMs     Int          @default(2000)
+  memoryLimitMb   Int          @default(128)
+  createdAt       DateTime     @default(now())
+
+  submissions     Submission[]
+  srsProgress     UserProblemSRS[]
+
+  @@index([category, difficulty])
+  @@index([slug])
+}
+
+model Submission {
+  id              String           @id @default(uuid())
+  userId          String
+  problemId       String
+  language        String
+  code            String           @db.Text
+  status          SubmissionStatus
+  runtimeMs       Int?
+  memoryKb        Int?
+  timeComplexity  String?
+  spaceComplexity String?
+  aiCritique      String?          @db.Text
+  passedTestCases Int              @default(0)
+  totalTestCases  Int              @default(0)
+  createdAt       DateTime         @default(now())
+
+  user            User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  problem         Problem          @relation(fields: [problemId], references: [id], onDelete: Cascade)
+
+  @@index([userId, problemId])
+  @@index([createdAt])
+}
+
+model SystemDesignPrompt {
+  id                   String   @id @default(uuid())
+  slug                 String   @unique
+  title                String
+  type                 String   // "HLD" | "LLD"
+  scaleRequirements    String   @db.Text
+  functionalSpecs      String[]
+  nonFunctionalSpecs   String[]
+  referenceDiagramJson Json?
+  rubricJson           Json
+  starterUml           String?  @db.Text
+  createdAt            DateTime @default(now())
+
+  @@index([slug])
+}
+
+model Flashcard {
+  id           String             @id @default(uuid())
+  deckCategory String
+  front        String             @db.Text
+  back         String             @db.Text
+  codeSnippet  String?            @db.Text
+  tags         String[]
+  createdAt    DateTime           @default(now())
+
+  srs          UserFlashcardSRS[]
+
+  @@index([deckCategory])
+}
+
+model UserFlashcardSRS {
+  id             String    @id @default(uuid())
+  userId         String
+  cardId         String
+  easeFactor     Float     @default(2.5)
+  interval       Int       @default(0)
+  repetition     Int       @default(0)
+  nextReviewDate DateTime  @default(now())
+  lastReviewedAt DateTime?
+
+  user           User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  card           Flashcard @relation(fields: [cardId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, cardId])
+  @@index([userId, nextReviewDate])
+}
+
+model UserProblemSRS {
+  id             String    @id @default(uuid())
+  userId         String
+  problemId      String
+  easeFactor     Float     @default(2.5)
+  interval       Int       @default(0)
+  repetition     Int       @default(0)
+  nextReviewDate DateTime  @default(now())
+  lastReviewedAt DateTime?
+
+  problem        Problem   @relation(fields: [problemId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, problemId])
+  @@index([userId, nextReviewDate])
+}
+
+model MockInterviewSession {
+  id                String        @id @default(uuid())
+  userId            String
+  type              InterviewType
+  roleTarget        String
+  durationMinutes   Int           @default(45)
+  transcriptJson    Json
+  feedbackScoreJson Json
+  summaryReview     String?       @db.Text
+  createdAt         DateTime      @default(now())
+
+  user              User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, createdAt])
+}
+
+model BehavioralStory {
+  id            String   @id @default(uuid())
+  userId        String
+  title         String
+  companyPillar String
+  situation     String   @db.Text
+  task          String   @db.Text
+  action        String   @db.Text
+  result        String   @db.Text
+  aiScore       Int?     @default(0)
+  aiFeedback    String?  @db.Text
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model RoadmapProgress {
+  id             String   @id @default(uuid())
+  userId         String
+  roadmapKey     String
+  completedSlugs String[]
+  updatedAt      DateTime @updatedAt
+
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, roadmapKey])
+}
+
+model ATSScanResult {
+  id                 String   @id @default(uuid())
+  userId             String
+  jobTitle           String
+  matchPercentage    Int
+  identifiedSkills   String[]
+  missingKeywords    String[]
+  bulletImprovements Json
+  createdAt          DateTime @default(now())
+
+  user               User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
