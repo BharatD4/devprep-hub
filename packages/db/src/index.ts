@@ -5,16 +5,34 @@ import { SEED_PROBLEMS, SEED_SYSTEM_DESIGN, SEED_FLASHCARDS, SeedProblem, SeedSy
 
 export * from './data';
 
-// Singleton PrismaClient for production/Supabase
 const globalForPrisma = globalThis as unknown as { prisma?: PrismaClient };
 
-export const prisma =
-  globalForPrisma.prisma ||
-  new PrismaClient({
-    log: typeof process !== 'undefined' && process.env?.NODE_ENV === 'development' ? ['error', 'warn'] : ['error'],
+function createSafePrisma(): PrismaClient {
+  let instance: PrismaClient | null = null;
+  return new Proxy({} as PrismaClient, {
+    get(_target, prop) {
+      if (!instance) {
+        try {
+          instance =
+            globalForPrisma.prisma ||
+            new PrismaClient({
+              log: typeof process !== 'undefined' && process.env?.NODE_ENV === 'development' ? ['error', 'warn'] : ['error'],
+            });
+          if (typeof process !== 'undefined' && process.env?.NODE_ENV !== 'production') {
+            globalForPrisma.prisma = instance;
+          }
+        } catch (err) {
+          console.warn('Prisma client not yet generated or available, using fallback store');
+          return () => Promise.resolve(null);
+        }
+      }
+      const val = (instance as any)[prop];
+      return typeof val === 'function' ? val.bind(instance) : val;
+    },
   });
+}
 
-if (typeof process !== 'undefined' && process.env?.NODE_ENV !== 'production') globalForPrisma.prisma = prisma;
+export const prisma = createSafePrisma();
 
 /**
  * Resilient In-Memory Data Store

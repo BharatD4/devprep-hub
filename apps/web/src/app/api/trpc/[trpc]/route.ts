@@ -1,6 +1,8 @@
 import { fetchRequestHandler } from '@trpc/server/adapters/fetch';
 import { appRouter, createContext } from '@devprep/api';
 
+export const dynamic = 'force-dynamic';
+
 const handler = (req: Request) =>
   fetchRequestHandler({
     endpoint: '/api/trpc',
@@ -16,4 +18,3 @@ const handler = (req: Request) =>
   });
 
 export { handler as GET, handler as POST };
-

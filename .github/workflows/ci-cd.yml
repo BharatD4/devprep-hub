@@ -42,3 +42,4 @@ jobs:
 
       - name: Build Next.js 15 Web Application
         run: pnpm --filter @devprep/web build
+
