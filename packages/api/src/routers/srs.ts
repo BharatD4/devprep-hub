@@ -4,6 +4,30 @@ import { ReviewCardSchema } from '../schemas';
 import { calculateSM2 } from '@devprep/ui';
 
 export const srsRouter = router({
+  listTheory: publicProcedure
+    .input(
+      z.object({
+        category: z.string().optional(),
+        search: z.string().optional(),
+      }).optional()
+    )
+    .query(({ ctx, input }) => {
+      let cards = ctx.db.flashcards;
+      if (input?.category && input.category !== 'ALL') {
+        cards = cards.filter((c) => c.deckCategory.toLowerCase().includes(input.category!.toLowerCase()));
+      }
+      if (input?.search) {
+        const q = input.search.toLowerCase();
+        cards = cards.filter(
+          (c) =>
+            c.front.toLowerCase().includes(q) ||
+            c.back.toLowerCase().includes(q) ||
+            c.tags.some((t) => t.toLowerCase().includes(q))
+        );
+      }
+      return cards;
+    }),
+
   getDueQueue: protectedProcedure.query(({ ctx }) => {
     const now = new Date();
     const flashcards = ctx.db.flashcards;
