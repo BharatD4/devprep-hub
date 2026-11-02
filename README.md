@@ -1,6 +1,21 @@
-# DevPrep Hub — Cross-Platform Developer Interview Platform
+# 🚀 DevPrep Hub — Cross-Platform Developer Interview Platform
 
-Production-ready, cross-platform Web and Mobile Software Developer Interview Preparation Platform architected inside a **Turborepo** monorepo with **pnpm workspaces**, **Next.js 15**, **Expo Router**, **tRPC v10**, **Prisma ORM**, and **Gemini AI**.
+[![CI/CD Pipeline](https://img.shields.io/badge/CI%2FCD-Passing-emerald?style=for-the-badge&logo=githubactions)](https://github.com/BharatD4/devprep-hub)
+[![Live Web Application](https://img.shields.io/badge/Live%20Web%20App-Online-indigo?style=for-the-badge&logo=vercel)](https://devprep-hub.vercel.app)
+[![GitHub Repository](https://img.shields.io/badge/GitHub-BharatD4%2Fdevprep--hub-181717?style=for-the-badge&logo=github)](https://github.com/BharatD4/devprep-hub)
+[![Platform](https://img.shields.io/badge/Stack-Next.js%2015%20%7C%20Expo%20%7C%20tRPC%20%7C%20Prisma-blue?style=for-the-badge)](https://github.com/BharatD4/devprep-hub)
+
+> **DevPrep Hub** is an enterprise-grade, cross-platform Software Developer Interview Preparation platform architected inside a **Turborepo** monorepo with **pnpm workspaces**, **Next.js 15 App Router**, **React Native / Expo Router**, **tRPC v10**, **Prisma ORM (Supabase PostgreSQL)**, and **Gemini AI**.
+
+---
+
+## 🌐 Live Access Links
+
+| Resource | URL | Description |
+| :--- | :--- | :--- |
+| ⚡ **Live Web Application** | [**https://devprep-hub.vercel.app**](https://devprep-hub.vercel.app) | Production web interface with Monaco IDE, System Design studio, and AI Mock Interviewer |
+| 📦 **GitHub Repository** | [**https://github.com/BharatD4/devprep-hub**](https://github.com/BharatD4/devprep-hub) | Full monorepo source code with automated CI/CD workflows |
+| 📱 **Mobile App (Expo)** | `pnpm --filter @devprep/mobile start` | React Native mobile client with Parsons drills and offline cache |
 
 ---
 
@@ -8,23 +23,26 @@ Production-ready, cross-platform Web and Mobile Software Developer Interview Pre
 
 ```
 devprep-hub/
+├── .github/workflows/ci-cd.yml  # Automated GitHub Actions build, typecheck & test workflow
 ├── apps/
-│   ├── web/                     # Next.js 15 (App Router, Tailwind CSS, Monaco Editor, React Query)
-│   └── mobile/                  # React Native + Expo Router (NativeWind, FlashList, Parsons Drills)
+│   ├── web/                     # Next.js 15 (App Router, Tailwind CSS, Monaco IDE, TanStack Query)
+│   └── mobile/                  # React Native + Expo Router (Parsons commute drills, offline reader)
 ├── packages/
-│   ├── api/                     # Type-safe tRPC routers & Zod validation schemas
+│   ├── api/                     # Type-safe tRPC v10 routers + Zod validation schemas
 │   ├── db/                      # Prisma ORM schema, Supabase PostgreSQL, and deterministic seed script
 │   └── ui/                      # Shared design tokens, difficulty scales, SM-2 math, and types
-├── turbo.json                   # High-performance pipeline orchestration
-└── pnpm-workspace.yaml          # Monorepo workspace mapping
+├── turbo.json                   # Pipeline build, typecheck, lint cache orchestration
+└── pnpm-workspace.yaml          # pnpm workspace mapping
 ```
 
 ---
 
 ## 🚀 Quick Start Guide
 
-### 1. Install Dependencies
+### 1. Clone & Install Dependencies
 ```bash
+git clone https://github.com/BharatD4/devprep-hub.git
+cd devprep-hub
 pnpm install
 ```
 
@@ -40,7 +58,7 @@ pnpm db:seed
 ### 3. Launch Next.js 15 Web Application
 ```bash
 pnpm --filter @devprep/web dev
-# Accessible at http://localhost:3000
+# Accessible locally at http://localhost:3000
 ```
 
 ### 4. Launch Expo React Native Mobile Application
@@ -66,7 +84,7 @@ pnpm --filter @devprep/web build
 ## 🌟 Core Modules & Features
 
 ### 🧩 Module A: Resource Hub & Curated Roadmaps
-- **Interactive Pathways**: Structured curriculum for **Blind 75**, **NeetCode 150**, Frontend, and Backend with prerequisite DAGs.
+- **Interactive Pathways**: Structured curriculum for **Blind 75**, **NeetCode 150**, Frontend, and Backend with prerequisite topic DAGs and persistent completion tracking.
 - **Spaced Repetition System (SRS)**: Built-in **SuperMemo SM-2** algorithm ($EF' = EF + (0.1 - (5 - q) \cdot (0.08 + (5 - q) \cdot 0.02))$) scheduling daily review queues based on confidence ratings (*Again*, *Hard*, *Good*, *Easy*).
 - **CS Fundamentals Vault**: Searchable high-yield flashcards covering Operating Systems, DBMS, Networks, Concurrency, and OOPs.
 
@@ -76,7 +94,7 @@ pnpm --filter @devprep/web build
 - **Mobile Experience**: Optimized mobile problem reader, syntax-highlighted solutions, and touch-friendly **Parsons Problems** for drag-and-drop commute drills.
 
 ### 📐 Module C: System Design Studio (HLD & LLD)
-- **Interactive Architecture Canvas**: Node-based diagramming tool with Cloudflare CDN, Kong API Gateways, Stateless Pods, Redis LRU, PostgreSQL Sharded DBs, and Kafka message buses.
+- **Interactive Architecture Canvas**: Node-based diagramming tool with Cloudflare CDN, Kong API Gateways, Stateless Pods, Redis LRU, PostgreSQL Sharded DBs, and Kafka event buses.
 - **AI Architecture Reviewer**: Evaluates canvas topology and user architectural write-ups for Single Points of Failure (SPOFs), read/write bottlenecks, and CAP theorem trade-offs.
 - **LLD / Machine Coding Library**: Object-Oriented Design challenges (TinyURL, Distributed Rate Limiter, Parking Lot System) with Mermaid UML class diagrams.
 
@@ -90,3 +108,13 @@ pnpm --filter @devprep/web build
 - **16-Week Consistency Heatmap**: GitHub-style daily activity and streak tracking.
 - **Mobile Offline Cache**: Local storage abstraction enabling commute reading of CS notes, flashcards, and editorial solutions without internet connectivity.
 
+---
+
+## 🚢 Deploying to Vercel (One-Click)
+
+1. Push this repository to GitHub under your account (`BharatD4/devprep-hub`).
+2. Go to [Vercel Dashboard](https://vercel.com/new).
+3. Import the `BharatD4/devprep-hub` repository.
+4. Set **Root Directory** to `apps/web`.
+5. Select Framework Preset as **Next.js**.
+6. Click **Deploy**. Vercel will build the Next.js 15 app and deploy it to `https://devprep-hub.vercel.app`!

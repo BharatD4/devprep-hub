@@ -1,0 +1,44 @@
+name: DevPrep Hub CI/CD
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-verify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 11.1.2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'pnpm'
+
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Generate Prisma Engine
+        run: pnpm db:generate
+
+      - name: Run Test Suite & Seed Validation
+        run: pnpm db:seed
+
+      - name: Typecheck Workspaces
+        run: pnpm run typecheck
+
+      - name: Lint Workspaces
+        run: pnpm run lint
+
+      - name: Build Next.js 15 Web Application
+        run: pnpm --filter @devprep/web build
